@@ -1,8 +1,9 @@
 import React from 'react';
-import { Typography, Grid } from '@material-ui/core';
+import { Typography, Grid, Button } from '@material-ui/core';
 import Coffee from '../card/Coffee';
 
-const HomeContent = () => {
+const HomeContent = (props) => {
+
 	return (
 		<Grid container spacing={4}>
 			<Grid item xs={12} sm={4}>
