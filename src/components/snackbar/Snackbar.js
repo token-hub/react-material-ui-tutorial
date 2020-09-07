@@ -1,44 +1,46 @@
-import React from 'react'
-import { Snackbar, Button } from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
-import { Slide, Collapse, Grow, Fade } from '@material-ui/core';
+import React, {useState} from 'react'
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import { Alert, AlertTitle } from '@material-ui/lab';
+import Slide from '@material-ui/core/Slide'; 
 
 const SnackbarComp = () => {
- const [transition, setTransition] = React.useState(undefined);
- const [state, setState] = React.useState(false);
 
- const transitionTopRight = (props) => {
- 	return <Slide {...props}  direction='left' />
- }
- 
-  const handleClick = (transition) => () => {
-  	setTransition(() => transition);
-    setState(true);
-  };
+	const [open, setOpen] = useState(false);
+	const [transition, setTransition] = useState(undefined);
 
-  const handleClose = () => {
-    setState(false);
-  };
+	const transitionSlide = props => {
+		return <Slide {...props} direction='left' />
+	}
 
-	return (
+	const handleClick = (transition) => () => {
+		setTransition(() => transition)
+		setOpen(true);
+	}
+
+	const handleOnClose = () => {
+		setOpen(false);
+	}
+
+ 	return (
 		<div>
-		  <Button variant="outlined" onClick={handleClick(transitionTopRight)}>
-	        Open success snackbar
-	      </Button>
-
-     		<Snackbar 
-				open={state} 
+			<Button variant='contained' color='primary' onClick={handleClick(transitionSlide)}> Open Snackbar </Button>
+			<Snackbar
 				anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-				autoHideDuration={3000} 
-				onClose={handleClose}
-				message='I love snacks'
-				TransitionComponent={transition}
-				>
-     			<Alert severity="error" onClose={handleClose} variant='filled'>This is an error message!</Alert>
-		
+				autoHideDuration={3000}
+				onClose={handleOnClose}
+				open={open}
+				TransitionComponent={transition} // slide
+			>
+			<Alert
+				severity='success'
+				variant='filled'
+				onClose={handleOnClose}
+			>
+				{/*<AlertTitle>Success</AlertTitle>*/}
+				Transaction saved!
+			</Alert>
 			</Snackbar>
-	    
-	     
 		</div>
 	)
 }
