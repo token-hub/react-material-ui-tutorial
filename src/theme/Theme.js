@@ -4,15 +4,15 @@ import lime from '@material-ui/core/colors/lime';
 
 const theme = darkMode => { 
 	return createMuiTheme({
-		palette: {
-			// primary: {
-			// 	main: blueGrey[300]
-			// },
-			// secondary: {
-			// 	main: lime[600]
-			// }
-			type: darkMode ? 'dark' : 'light'
-		},
+		// palette: {
+		// 	// primary: {
+		// 	// 	main: blueGrey[300]
+		// 	// },
+		// 	// secondary: {
+		// 	// 	main: lime[600]
+		// 	// }
+		// 	type: darkMode ? 'dark' : 'light'
+		// },
 		typography: {
 			h2: {
 				letterSpacing: '2rem'
